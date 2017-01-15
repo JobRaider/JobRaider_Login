@@ -34,6 +34,8 @@ ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
  String s4=request.getParameter("est");
  System.out.println(s1);
  System.out.println(s2); 
+ System.out.println(s3); 
+ System.out.println(s4); 
 
  
 	   repository.InsertLog(s1, s2,s3 ,s4); 

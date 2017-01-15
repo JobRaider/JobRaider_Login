@@ -24,14 +24,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResisterUser extends Activity {
-	 EditText userName,passwprd;
+	 EditText userName,passwprd, apellido, dni;
 	   Button resister,login;
 	   ProgressBar progressBar;
+	String ip = "192.168.1.101:8080";
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_resister_user);
 	        userName=(EditText) findViewById(R.id.editText1);;
 	        passwprd=(EditText) findViewById(R.id.editText2);
+			apellido=(EditText) findViewById(R.id.editText3);
+			dni=(EditText) findViewById(R.id.editText4);
 	        resister=(Button) findViewById(R.id.button1);
 	        
 	        progressBar=(ProgressBar) findViewById(R.id.progressBar1);
@@ -46,7 +49,9 @@ public class ResisterUser extends Activity {
 					
 					String s1=userName.getText().toString();
 					String s2=passwprd.getText().toString();
-					new ExecuteTask().execute(s1,s2);
+					String s3=apellido.getText().toString();
+					String s4=dni.getText().toString();
+					new ExecuteTask().execute(s1,s2,s3, s4);
 				}
 			});
 	        
@@ -78,10 +83,12 @@ public class ResisterUser extends Activity {
 	    	try
 	    	{
 	    	HttpClient httpClient=new DefaultHttpClient();
-	    	HttpPost httpPost=new HttpPost("http://192.168.1.55:8080/JobRaide-Servlet/httpPostServlet");
+	    	HttpPost httpPost=new HttpPost("http://" + ip + "/JobRaide-Servlet/httpPostServlet");
 	    	List<NameValuePair> list=new ArrayList<NameValuePair>();
 	    	list.add(new BasicNameValuePair("name", valuse[0]));
 	    	list.add(new BasicNameValuePair("pass",valuse[1]));
+				list.add(new BasicNameValuePair("ape",valuse[3]));
+				list.add(new BasicNameValuePair("dni",valuse[4]));
 	    	httpPost.setEntity(new UrlEncodedFormEntity(list));
 	    	httpClient.execute(httpPost);
 	    	}

@@ -30,13 +30,15 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     EditText password,userName;
-    Button login,resister;
+    Button login,resister, config;
     ProgressBar progressBar;
     TextView user;
+    String ip = "192.168.1.101:8080";
 
 
 
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         password=(EditText) findViewById(R.id.editText2);
@@ -44,6 +46,8 @@ public class MainActivity extends Activity {
         user=(TextView) findViewById(R.id.user);
         login=(Button) findViewById(R.id.button1);
         resister=(Button) findViewById(R.id.button2);
+        config=(Button) findViewById(R.id.button3);
+
 
         //progess_msz.setVisibility(View.GONE);
         progressBar=(ProgressBar) findViewById(R.id.progressBar1);
@@ -56,6 +60,15 @@ public class MainActivity extends Activity {
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
                 Intent  intent=new Intent(MainActivity.this, ResisterUser.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+        config.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                Intent  intent=new Intent(MainActivity.this, Config.class);
                 startActivityForResult(intent, 0);
             }
         });
@@ -100,7 +113,7 @@ public class MainActivity extends Activity {
         try
         {
             HttpClient httpClient=new DefaultHttpClient();
-            HttpPost httpPost=new HttpPost("http://192.168.1.55:8080/JobRaide-Servlet/Login");
+            HttpPost httpPost=new HttpPost("http://" + ip + "/JobRaide-Servlet/Login");
 
             List<NameValuePair> list=new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("name", valuse[0]));
