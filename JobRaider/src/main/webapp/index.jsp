@@ -1,14 +1,25 @@
+
+
 <form action="Login">
-Name:<input type="text" name="name"/><br/>
-Password:<input type="password" name="pass"/><br/>
-<input type="submit" value="login"/>
+	NOmbre:<input type="text" name="name" /><br /> Password:<input
+		type="password" name="pass" /><br /> <input type="submit"
+		value="login" />
 </form>
 
-<a>Insertar</a>
+<a>Insertar usuarios</a>
 <form action="httpPostServlet">
-Name:<input type="text" name="name"/><br/>
-Password:<input type="password" name="pass"/><br/>
-<input type="submit" value="httpPostServlet"/>
+	Name:<input type="text" name="name" /><br /> Password:<input
+		type="password" name="pass" /><br /> Apellido:<input type="text"
+		name="ape" /><br /> Dni:<input type="password" name="dni" /><br /> <input
+		type="submit" value="Insertar" />
+</form>
+<a>Insertar Log</a>
+<form action="httpPostServletLog">
+	Name:<input type="text" name="name" /><br /> 
+	Apellido:<input type="text" name="ape" /><br /> 
+		Hora:<input type="date" name="hora" /><br />
+	Estado:<input type="text" name="est" /><br /> <input type="submit"
+		value="Insertar-Log" />
 </form>
 
 

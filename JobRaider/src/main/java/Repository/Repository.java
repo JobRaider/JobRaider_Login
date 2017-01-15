@@ -19,7 +19,7 @@ public class Repository {
 		try {
 			connection = manager.open(jdbcUrl);
 
-			PreparedStatement ps = connection.prepareStatement("select * from user where name=? and password=?");
+			PreparedStatement ps = connection.prepareStatement("select * from user where nombre=? and password=?");
 			ps.setString(1, name);
 			ps.setString(2, pass);
 
@@ -32,21 +32,41 @@ public class Repository {
 		}
 		return status;
 	}
-	public void Insert(String s1, String s2){
+	public void InsertUser(String s1, String s2, String s3, String s4){
 		boolean status = false;
 		Connection connection = null;
 		try
     	{
 			connection = manager.open(jdbcUrl);
-    	PreparedStatement ps=connection.prepareStatement("insert into user (name, password) values( ?, ?)");
+    	PreparedStatement ps=connection.prepareStatement("insert into user (nombre, apellido, password, dni) values( ?, ?, ?, ?)");
     	ps.setString(1, s1);
     	ps.setString(2,s2);
+    	ps.setString(3, s3);
+    	ps.setString(4,s4);
     	ps.executeUpdate();
     	manager.close(connection);
     	}
     	catch (Exception e) {
     		e.printStackTrace();
 		}
+	}
+		public void InsertLog(String s1, String s2, String s3, String s4){
+			boolean status = false;
+			Connection connection = null;
+			try
+	    	{
+				connection = manager.open(jdbcUrl);
+	    	PreparedStatement ps=connection.prepareStatement("insert into log (nombre, apellido, hora, estado) values( ?, ?, ?, ?)");
+	    	ps.setString(1, s1);
+	    	ps.setString(2,s2);
+	    	ps.setString(3, s3);
+	    	ps.setString(4,s4);
+	    	ps.executeUpdate();
+	    	manager.close(connection);
+	    	}
+	    	catch (Exception e) {
+	    		e.printStackTrace();
+			}
 		
 		
 	}

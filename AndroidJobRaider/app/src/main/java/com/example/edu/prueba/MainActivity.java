@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
         try
         {
             HttpClient httpClient=new DefaultHttpClient();
-            HttpPost httpPost=new HttpPost("http://10.0.113.128:8080/JobRaider/Login");
+            HttpPost httpPost=new HttpPost("http://192.168.1.55:8080/JobRaide-Servlet/Login");
 
             List<NameValuePair> list=new ArrayList<NameValuePair>();
             list.add(new BasicNameValuePair("name", valuse[0]));
