@@ -20,7 +20,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -30,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     EditText password,userName;
-    Button login,resister, config;
+    Button login,resister, config, logReg;
     ProgressBar progressBar;
     TextView user;
     String ip = "192.168.1.101:8080";
@@ -41,12 +40,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        password=(EditText) findViewById(R.id.editText2);
-        userName=(EditText) findViewById(R.id.editText1);
+        password=(EditText) findViewById(R.id.pas);
+        userName=(EditText) findViewById(R.id.nombre);
         user=(TextView) findViewById(R.id.user);
-        login=(Button) findViewById(R.id.button1);
+        login=(Button) findViewById(R.id.register);
         resister=(Button) findViewById(R.id.button2);
         config=(Button) findViewById(R.id.button3);
+        logReg=(Button) findViewById(R.id.logReg);
 
 
         //progess_msz.setVisibility(View.GONE);
@@ -60,6 +60,15 @@ public class MainActivity extends Activity {
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
                 Intent  intent=new Intent(MainActivity.this, ResisterUser.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+        logReg.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                Intent  intent=new Intent(MainActivity.this, ResisterLog.class);
                 startActivityForResult(intent, 0);
             }
         });

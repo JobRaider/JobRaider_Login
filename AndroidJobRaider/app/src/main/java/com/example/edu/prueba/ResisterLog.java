@@ -23,20 +23,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResisterUser extends Activity {
-	EditText userName,passwprd, apellido, dni;
+public class ResisterLog extends Activity {
+	EditText userName,passwprd, hora, est;
 	Button register;
 	ProgressBar progressBar;
 	String ip = "192.168.1.101:8080";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_resister_user);
-		userName=(EditText) findViewById(R.id.nombre);;
-		passwprd=(EditText) findViewById(R.id.pas);
-		apellido=(EditText) findViewById(R.id.ape);
-		dni=(EditText) findViewById(R.id.dni);
-		register=(Button) findViewById(R.id.register);
+		setContentView(R.layout.activity_resister_log);
+		userName=(EditText) findViewById(R.id.nomLog);;
+		passwprd=(EditText) findViewById(R.id.apeLog);
+		hora=(EditText) findViewById(R.id.hoaLog);
+		est=(EditText) findViewById(R.id.estLog);
+		register=(Button) findViewById(R.id.envLog);
 
 		progressBar=(ProgressBar) findViewById(R.id.progressBar1);
 		progressBar.setVisibility(View.GONE);
@@ -48,8 +48,8 @@ public class ResisterUser extends Activity {
 
 				String s1=userName.getText().toString();
 				String s2=passwprd.getText().toString();
-				String s3=apellido.getText().toString();
-				String s4=dni.getText().toString();
+				String s3=hora.getText().toString();
+				String s4=est.getText().toString();
 				new ExecuteTask().execute(s1,s2,s3,s4);
 			}
 		});
@@ -72,12 +72,12 @@ public class ResisterUser extends Activity {
 		try {
 			HttpClient httpClient=new DefaultHttpClient();
 			//HttpPost httpPost=new HttpPost("http://" + ip + "/JobRaide-Servlet/httpPostServlet");
-			HttpPost httpPost=new HttpPost("http://" + ip + "/JobRaide-Servlet/httpPostServlet");
+			HttpPost httpPost=new HttpPost("http://" + ip + "/JobRaide-Servlet/httpPostServletLog");
 			List<NameValuePair> list=new ArrayList<NameValuePair>();
 			list.add(new BasicNameValuePair("name", valuse[0]));
 			list.add(new BasicNameValuePair("pass",valuse[1]));
-			list.add(new BasicNameValuePair("ape",valuse[2]));
-			list.add(new BasicNameValuePair("dni",valuse[3]));
+			list.add(new BasicNameValuePair("hora",valuse[2]));
+			list.add(new BasicNameValuePair("est",valuse[3]));
 			httpPost.setEntity(new UrlEncodedFormEntity(list));
 			httpClient.execute(httpPost);
 		}

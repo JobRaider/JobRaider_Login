@@ -32,13 +32,13 @@ public class Repository {
 		}
 		return status;
 	}
-	public void InsertUser(String s1, String s2, String s3, String s4){
+	public void InsertUser(String s1, String s2,  String s3, String s4){
 		boolean status = false;
 		Connection connection = null;
 		try
     	{
 			connection = manager.open(jdbcUrl);
-    	PreparedStatement ps=connection.prepareStatement("insert into user (nombre, apellido, password, dni) values( ?, ?, ?, ?)");
+    	PreparedStatement ps=connection.prepareStatement("insert into user (nombre, password, apellido, dni) values( ?, ?, ?, ? )");
     	ps.setString(1, s1);
     	ps.setString(2,s2);
     	ps.setString(3, s3);

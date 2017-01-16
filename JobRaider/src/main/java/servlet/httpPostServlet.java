@@ -29,14 +29,16 @@ ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
 
 
  String s1=request.getParameter("name");
- String s2=request.getParameter("ape");
- String s3=request.getParameter("pass");
+String s3=request.getParameter("ape");
+ String s2=request.getParameter("pass");
  String s4=request.getParameter("dni");
  System.out.println(s1);
- System.out.println(s2); 
+System.out.println(s2);
+ System.out.println(s3); 
+ System.out.println(s4); 
 
  
-	   repository.InsertUser(s1, s2,s3 ,s4); 
+	   repository.InsertUser(s1, s2, s3,s4 ); 
 	       out.writeObject("Registrado " + s1);
 	    
 	  
