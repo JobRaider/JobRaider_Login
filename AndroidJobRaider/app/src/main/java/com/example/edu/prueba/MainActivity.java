@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
     Button login,resister, config, logReg;
     ProgressBar progressBar;
     TextView user;
-    String ip = "192.168.1.101:8080";
+    String ip = "192.168.1.55:8080";
 
 
 

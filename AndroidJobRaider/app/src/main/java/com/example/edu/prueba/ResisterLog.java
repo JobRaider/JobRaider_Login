@@ -24,17 +24,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResisterLog extends Activity {
-	EditText userName,passwprd, hora, est;
+	EditText userName,ape, hora, est;
 	Button register;
 	ProgressBar progressBar;
-	String ip = "192.168.1.101:8080";
+	String ip = "192.168.1.55:8080";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_resister_log);
 		userName=(EditText) findViewById(R.id.nomLog);;
-		passwprd=(EditText) findViewById(R.id.apeLog);
-		hora=(EditText) findViewById(R.id.hoaLog);
+		ape=(EditText) findViewById(R.id.apeLog);
 		est=(EditText) findViewById(R.id.estLog);
 		register=(Button) findViewById(R.id.envLog);
 
@@ -47,10 +46,9 @@ public class ResisterLog extends Activity {
 				progressBar.setVisibility(View.VISIBLE);
 
 				String s1=userName.getText().toString();
-				String s2=passwprd.getText().toString();
-				String s3=hora.getText().toString();
-				String s4=est.getText().toString();
-				new ExecuteTask().execute(s1,s2,s3,s4);
+				String s2=ape.getText().toString();
+				String s3=est.getText().toString();
+				new ExecuteTask().execute(s1,s2,s3);
 			}
 		});
 	}
@@ -75,9 +73,8 @@ public class ResisterLog extends Activity {
 			HttpPost httpPost=new HttpPost("http://" + ip + "/JobRaide-Servlet/httpPostServletLog");
 			List<NameValuePair> list=new ArrayList<NameValuePair>();
 			list.add(new BasicNameValuePair("name", valuse[0]));
-			list.add(new BasicNameValuePair("pass",valuse[1]));
-			list.add(new BasicNameValuePair("hora",valuse[2]));
-			list.add(new BasicNameValuePair("est",valuse[3]));
+			list.add(new BasicNameValuePair("ape",valuse[1]));
+			list.add(new BasicNameValuePair("est",valuse[2]));
 			httpPost.setEntity(new UrlEncodedFormEntity(list));
 			httpClient.execute(httpPost);
 		}

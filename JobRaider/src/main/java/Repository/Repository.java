@@ -1,9 +1,13 @@
 package Repository;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 
 import conection.ConnectionManager;
 import conection.ConnectionMysql;
@@ -50,17 +54,19 @@ public class Repository {
     		e.printStackTrace();
 		}
 	}
-		public void InsertLog(String s1, String s2, String s3, String s4){
+		public void InsertLog(String s1, String s2, String s3){
 			boolean status = false;
 			Connection connection = null;
 			try
 	    	{
 				connection = manager.open(jdbcUrl);
-	    	PreparedStatement ps=connection.prepareStatement("insert into log (nombre, apellido, hora, estado) values( ?, ?, ?, ?)");
+				
+			
+	    	PreparedStatement ps=connection.prepareStatement("insert into log (nombre, apellido, fecha, hora, estado) values( ?, ?, NOW() ,CURTIME()  , ?)");
 	    	ps.setString(1, s1);
 	    	ps.setString(2,s2);
-	    	ps.setString(3, s3);
-	    	ps.setString(4,s4);
+	    	
+	    	ps.setString(3,s3);
 	    	ps.executeUpdate();
 	    	manager.close(connection);
 	    	}

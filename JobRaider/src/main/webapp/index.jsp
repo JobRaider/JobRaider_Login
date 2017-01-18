@@ -17,7 +17,7 @@
 <form action="httpPostServletLog">
 	Name:<input type="text" name="name" /><br /> 
 	Apellido:<input type="text" name="ape" /><br /> 
-		Hora:<input type="date" name="hora" /><br />
+		
 	Estado:<input type="text" name="est" /><br /> <input type="submit"
 		value="Insertar-Log" />
 </form>

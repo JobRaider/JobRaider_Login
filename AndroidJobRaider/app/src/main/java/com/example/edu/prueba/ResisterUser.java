@@ -27,7 +27,7 @@ public class ResisterUser extends Activity {
 	EditText userName,passwprd, apellido, dni;
 	Button register;
 	ProgressBar progressBar;
-	String ip = "192.168.1.101:8080";
+	String ip = "192.168.1.55:8080";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -31,17 +31,17 @@ public class Login extends HttpServlet {
 		    System.out.println(n);
 		    System.out.println(p);
 		          
-		    if(repository.Validate(n, p)){  
-		       out.writeObject("Hola " + n);
+		    if(Repository.Validate(n, p)){  
+		       out.writeChars("registrado"+ n);
 		    
 		    }  
 		    else{  
-		       out.writeObject("Usuario No Registrado");
+		       out.writeChars("Usuario No Registrado");
 		    			       
 		    }  
 		          
 		    out.close();  
-		    }  
+		   }  
 		
 	
  
