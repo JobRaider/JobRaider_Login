@@ -22,21 +22,22 @@ public class Login extends HttpServlet {
 	Repository repository = new Repository();
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 response.setContentType("text/html");  
+		 response.setContentType("text/html;charset=UTF-8");  
 		   
-		    ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
-		         
+		    //ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
+		    PrintWriter out = response.getWriter();    
 		    String n=request.getParameter("name");  
 		    String p=request.getParameter("pass");
 		    System.out.println(n);
 		    System.out.println(p);
 		          
 		    if(Repository.Validate(n, p)){  
-		       out.writeChars("registrado"+ n);
+		    	out.print("hola " + n + "   " + p) ;
+		    
 		    
 		    }  
 		    else{  
-		       out.writeChars("Usuario No Registrado");
+		    	out.print("Usuario no Registrado ");
 		    			       
 		    }  
 		          
