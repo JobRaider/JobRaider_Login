@@ -24,7 +24,7 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		 response.setContentType("text/html;charset=UTF-8");  
 		   
-		    //ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
+		   
 		    PrintWriter out = response.getWriter();    
 		    String n=request.getParameter("name");  
 		    String p=request.getParameter("pass");

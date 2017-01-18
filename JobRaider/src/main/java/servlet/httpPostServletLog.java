@@ -25,8 +25,7 @@ public void doGet(HttpServletRequest request,HttpServletResponse response)
      throws ServletException, IOException {
  response.setContentType("text/html");
 String recived_data=" ";
-ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
-
+PrintWriter out = response.getWriter(); 
 
  String s1=request.getParameter("name");
  String s2=request.getParameter("ape");
@@ -36,7 +35,7 @@ ObjectOutputStream out=new ObjectOutputStream(response.getOutputStream());
  System.out.println(s3); 
  
 	   repository.InsertLog(s1, s2,s3 ); 
-	       out.writeObject("Registrado " + s1);
+	       out.print("Registrado " + s1);
 	    
 	  
 	    out.close();  
